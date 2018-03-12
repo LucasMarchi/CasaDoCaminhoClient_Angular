@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Voluntario } from './voluntario';
 import { VoluntarioService } from '../voluntario.service';
+
 
 @Component({
   selector: 'app-voluntarios',
@@ -8,7 +10,11 @@ import { VoluntarioService } from '../voluntario.service';
   styleUrls: ['./voluntarios.component.css']
 })
 export class VoluntariosComponent implements OnInit {
-  voluntarios: Voluntario[];
+  displayedColumns = ['id', 'nome'];
+  dataSource: MatTableDataSource<Voluntario>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private voluntarioService: VoluntarioService) { }
 
@@ -18,7 +24,22 @@ export class VoluntariosComponent implements OnInit {
 
   getVoluntarios(): void {
     this.voluntarioService.getVoluntarios()
-    .subscribe(voluntarios => this.voluntarios = voluntarios);
+    .subscribe(voluntarios => {
+      this.dataSource = new MatTableDataSource(voluntarios);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+    
+  }
+
+  ngAfterViewInit() {
+    
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
 }

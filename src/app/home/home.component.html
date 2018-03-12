@@ -1,12 +1,7 @@
 <div>
   <p>Home</p>
   <div>
-    <button color="accent" *ngIf="!oktaAuthService.isAuthenticated()"
-            (click)="oktaAuthService.loginRedirect()">Login
-    </button>
-  </div>
-  <div>
-    <button *ngIf="oktaAuthService.isAuthenticated()"
+    <button mat-raised-button *ngIf="oktaAuthService.isAuthenticated()"
               [routerLink]="['/voluntarios']">voluntarios
     </button>
   </div>  

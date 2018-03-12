@@ -7,8 +7,5 @@ import { OktaAuthService } from '@okta/okta-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Casa do Caminho';
-
-  constructor(private oktaAuthService: OktaAuthService) {
-  }
+  constructor(private oktaAuthService: OktaAuthService) { }
 }

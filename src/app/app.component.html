@@ -1,12 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-
-  <button *ngIf="oktaAuthService.isAuthenticated()"
-    (click)="oktaAuthService.logout()" [routerLink]="['/home']">Logout
-  </button>
-
+<div>
+  <app-menu></app-menu>
+  <div class="container">
+    <h1>
+      Bem vindo à Casa do Caminho!
+    </h1>
+  
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<router-outlet></router-outlet>
