@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.nome" placeholder="Nome">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.identidade" placeholder="Identidade">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.cpf" placeholder="CPF">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.nacionalidade" placeholder="Nacionalidade">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.endereco" placeholder="Endereo (Rua, nº,  bloco, apto.)">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.bairro" placeholder="Bairro">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.cep" placeholder="CEP">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.estadoCivil" placeholder="Estado Civil">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="voluntario.telefone" placeholder="Telefone">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" 
+    (click)="add(voluntario); voluntario.nome.value=''">cadastrar
+  </button>
+</mat-card>

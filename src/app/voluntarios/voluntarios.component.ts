@@ -10,7 +10,7 @@ import { VoluntarioService } from '../voluntario.service';
   styleUrls: ['./voluntarios.component.css']
 })
 export class VoluntariosComponent implements OnInit {
-  displayedColumns = ['id', 'nome'];
+  displayedColumns = ['id', 'nome', 'cpf', 'telefone'];
   dataSource: MatTableDataSource<Voluntario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

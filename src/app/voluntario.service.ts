@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class VoluntarioService {
 
-  private voluntariosUrl = 'https://casadocaminhoserver.herokuapp.com/voluntarios/';
+  private voluntariosUrl = 'http://localhost:8080/voluntarios/';
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +24,14 @@ export class VoluntarioService {
       .pipe(
         tap(voluntarios => this.log(`fetched voluntarios`)),
         catchError(this.handleError('getvoluntarios', []))
+      );
+  }
+
+  addVoluntario (voluntario: Voluntario): Observable<Voluntario> {
+    return this.http.post<Voluntario>(this.voluntariosUrl, voluntario, httpOptions)
+      .pipe(
+        tap(voluntarios => this.log('voluntario cadastraso')),
+        catchError(this.handleError<Voluntario>('addHero'))
       );
   }
 
@@ -49,7 +57,7 @@ export class VoluntarioService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    //this.messageService.add('HeroService: ' + message);
+    console.log('HeroService: ' + message);
   }
 
 }

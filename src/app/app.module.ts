@@ -14,6 +14,7 @@ import { VoluntariosComponent } from './voluntarios/voluntarios.component';
 import { VoluntarioService } from './voluntario.service';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { VoluntarioCadastroComponent } from './voluntario-cadastro/voluntario-cadastro.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     VoluntariosComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    VoluntarioCadastroComponent
   ],
   imports: [
     BrowserModule,
