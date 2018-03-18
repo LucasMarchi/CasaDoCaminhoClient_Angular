@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class VoluntarioService {
 
-  private voluntariosUrl = 'http://localhost:8080/voluntarios/';
+  private voluntariosUrl = 'https://casadocaminhoserver.herokuapp.com/voluntarios/';
 
   constructor(private http: HttpClient) { }
 
