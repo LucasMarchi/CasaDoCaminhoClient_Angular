@@ -1,0 +1,28 @@
+<mat-card *ngIf="beneficiario">
+  <form [formGroup]="formulario" (ngSubmit)="update()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/home">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit" [disabled]="formulario.invalid">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.perfil.escolaridade" placeholder="Escolaridade" formControlName="escolaridade" name="escolaridade">
+      </mat-form-field>
+      <div *ngIf="formulario.controls.escolaridade.invalid && formulario.controls.escolaridade.touched">
+        Nome obrigatório
+      </div>
+      <br>
+      
+    </div>
+  </form>
+</mat-card>

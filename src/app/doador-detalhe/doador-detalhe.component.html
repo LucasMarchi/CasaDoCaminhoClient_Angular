@@ -1,0 +1,26 @@
+<mat-card *ngIf="doador">
+  <form [formGroup]="formulario" (ngSubmit)="update()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/home">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit" [disabled]="formulario.invalid">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.nome" placeholder="Nome" formControlName="nome" name="nome">
+      </mat-form-field>
+      <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
+        Nome obrigatório
+      </div>
+    </div>
+  </form>
+</mat-card>

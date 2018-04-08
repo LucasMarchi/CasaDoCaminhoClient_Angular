@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { Voluntario } from './voluntario';
+import { Voluntario } from '../models/voluntario'; '../models/voluntario';
 import { VoluntarioService } from '../voluntario.service';
 
 
@@ -10,7 +10,7 @@ import { VoluntarioService } from '../voluntario.service';
   styleUrls: ['./voluntarios.component.css']
 })
 export class VoluntariosComponent implements OnInit {
-  displayedColumns = ['id', 'nome', 'cpf', 'telefone'];
+  displayedColumns = ['id', 'nome', 'cpf', 'telefone', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Voluntario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,8 +32,11 @@ export class VoluntariosComponent implements OnInit {
     
   }
 
-  ngAfterViewInit() {
-    
+  excluir(id: number): void{
+    this.voluntarioService.deleteVoluntario(id)
+    .subscribe(() =>{
+      this.getVoluntarios();
+    });
   }
 
   applyFilter(filterValue: string) {

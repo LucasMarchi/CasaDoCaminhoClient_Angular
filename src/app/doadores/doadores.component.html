@@ -20,20 +20,10 @@
       <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="cpf">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> CPF </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.cpf}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="telefone">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.telefone}} </mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="editar">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <button mat-icon-button type="submit" routerLink="/voluntario/{{row.id}}">
+          <button mat-icon-button type="submit" routerLink="/doador/{{row.id}}">
             <mat-icon>edit</mat-icon>
           </button>
         </mat-cell>

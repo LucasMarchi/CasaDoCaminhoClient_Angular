@@ -1,0 +1,102 @@
+<mat-card *ngIf="beneficiario">
+  <form [formGroup]="formulario" (ngSubmit)="update()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/home">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit" [disabled]="formulario.invalid">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.nome" placeholder="Nome" formControlName="nome" name="nome">
+      </mat-form-field>
+      <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
+        Nome obrigatório
+      </div>
+      <br>
+      <mat-form-field>
+        <input type="number" matInput [(ngModel)]="beneficiario.idade" placeholder="Idade" formControlName="idade" name="idade">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.sexo" placeholder="Sexo" formControlName="sexo" name="sexo">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.cidadeNatal" placeholder="Cidade Natal" formControlName="cidadeNatal" name="cidadeNatal">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input type="number" matInput [(ngModel)]="beneficiario.anoMigracao" placeholder="Ano Migracao" formControlName="anoMigracao" name="anoMigracao">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.endereco" placeholder="Endereo (Rua, nº,  bloco, apto.)" formControlName="endereco"
+          name="endereco">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.bairro" placeholder="Bairro" formControlName="bairro" name="bairro">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.cep" placeholder="CEP" formControlName="cep" name="cep">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.cidade" placeholder="Cidade" formControlName="cidade" name="cidade">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.estado" placeholder="Estado" formControlName="estado" name="estado">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.estadoCivil" placeholder="Estado Civil" formControlName="estadoCivil" name="estadoCivil">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input type="number" matInput [(ngModel)]="beneficiario.quantidadeFilhos" placeholder="Quantidade de Filhos" formControlName="quantidadeFilhos" name="quantidadeFilhos">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.profissao" placeholder="Profissao" formControlName="profissao" name="profissao">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.estaTrabalhando" placeholder="Esta Trabalhando" formControlName="estaTrabalhando" name="estaTrabalhando">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.localTrabalho" placeholder="Local de Trabalho" formControlName="localTrabalho" name="localTrabalho">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.enederecoComercial" placeholder="Enedereço Comercial" formControlName="enederecoComercial" name="enederecoComercial">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.telefoneComercial" placeholder="Telefone Comercial" formControlName="telefoneComercial" name="telefoneComercial">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.telefoneResidencial" placeholder="Telefone Residencial" formControlName="telefoneResidencial" name="telefoneResidencial">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.identidade" placeholder="Identidade" formControlName="identidade" name="identidade">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.cpf" placeholder="CPF" formControlName="cpf" name="cpf">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>

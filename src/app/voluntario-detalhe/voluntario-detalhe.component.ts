@@ -2,18 +2,18 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Voluntario } from '../models/voluntario';
+import { Voluntario } from '../models/voluntario'; '../models/voluntario';
 import { VoluntarioService } from '../voluntario.service';
 
-
 @Component({
-  selector: 'app-voluntario-cadastro',
-  templateUrl: './voluntario-cadastro.component.html',
-  styleUrls: ['./voluntario-cadastro.component.css']
+  selector: 'app-voluntario-detalhe',
+  templateUrl: './voluntario-detalhe.component.html',
+  styleUrls: ['./voluntario-detalhe.component.css']
 })
-export class VoluntarioCadastroComponent implements OnInit {
+export class VoluntarioDetalheComponent implements OnInit {
 
-  voluntario: Voluntario = new Voluntario();
+  @Input() voluntario: Voluntario;
+
   formulario: FormGroup;
 
   constructor(
@@ -26,11 +26,12 @@ export class VoluntarioCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getVoluntario();
   }
 
   createForm() {
     this.formulario = this.formBuilder.group({
-      nome: ['', Validators.required ],
+      nome: ['', Validators.required],
       identidade: [''],
       cpf: [''],
       nacionalidade: [''],
@@ -42,9 +43,15 @@ export class VoluntarioCadastroComponent implements OnInit {
     });
   }
 
-  add(): void {
-    this.voluntarioService.addVoluntario(this.voluntario)
-    .subscribe(() => this.goBack());
+  getVoluntario(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.voluntarioService.getVoluntario(id)
+      .subscribe(voluntario => this.voluntario = voluntario);
+  }
+
+  update(): void {
+    this.voluntarioService.updateVoluntario(this.voluntario)
+      .subscribe(() => this.goBack());
   }
 
   goBack(): void {
@@ -52,3 +59,4 @@ export class VoluntarioCadastroComponent implements OnInit {
   }
 
 }
+

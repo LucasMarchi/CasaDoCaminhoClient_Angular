@@ -1,0 +1,63 @@
+<mat-card>
+  <form [formGroup]="formulario" (ngSubmit)="add()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/home">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit" [disabled]="formulario.invalid">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.nome" placeholder="Nome" formControlName="nome" name="nome">
+      </mat-form-field>
+      <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
+        Nome obrigatório
+      </div>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.justificativa" placeholder="Justificativa" formControlName="justificativa" name="justificativa">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.objetivoGeral" placeholder="Objetivo Geral" formControlName="objetivoGeral" name="objetivoGeral">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.objetivoEspecifico" placeholder="Objetivo Esprcifico" formControlName="objetivoEspecifico" name="objetivoEspecifico">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.metodologia" placeholder="Metodologia" formControlName="metodologia"
+          name="metodologia">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.publicoAlvo" placeholder="Público Alvo" formControlName="publicoAlvo" name="publicoAlvo">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.recursosCasaDoCaminho" placeholder="Recursos da Casa do Caminho" formControlName="recursosCasaDoCaminho" name="recursosCasaDoCaminho">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.sustentabilidadeDoProjeto" placeholder="Sustentabilidade do Projeto" formControlName="sustentabilidadeDoProjeto" name="sustentabilidadeDoProjeto">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.cronogramaAtividades" placeholder="Cronograma de Atividades" formControlName="cronogramaAtividades" name="cronogramaAtividades">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="projeto.equipeExecutora" placeholder="Equipe Executora" formControlName="equipeExecutora" name="equipeExecutora">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>

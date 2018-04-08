@@ -1,10 +1,16 @@
-<div>
+<div class="main">
   <app-menu></app-menu>
-  <div class="container">
-    <h1>
-      Bem vindo à Casa do Caminho!
-    </h1>
-  
-    <router-outlet></router-outlet>
-  </div>
+  <mat-sidenav-container class="container">
+
+    <mat-sidenav mode="side" opened>
+      <app-sidenav-menu></app-sidenav-menu>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
 </div>

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Voluntario } from './voluntarios/voluntario';
+import { Voluntario } from './models/voluntario'; './voluntarios/voluntario';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,9 +14,18 @@ const httpOptions = {
 @Injectable()
 export class VoluntarioService {
 
-  private voluntariosUrl = 'http://localhost:8080/voluntarios/';
+  private voluntariosUrl = 'http://localhost:8080/voluntarios';
 
   constructor(private http: HttpClient) { }
+
+  /** GET voluntario by id */
+  getVoluntario(id: number): Observable<Voluntario> {
+    const url = `${this.voluntariosUrl}/${id}`;
+    return this.http.get<Voluntario>(url).pipe(
+      tap(_ => this.log(`fetched voluntario id=${id}`)),
+      catchError(this.handleError<Voluntario>(`getVoluntario id=${id}`))
+    );
+  }
 
   /** GET voluntarios from the server */
   getVoluntarios (): Observable<Voluntario[]> {
@@ -31,8 +40,25 @@ export class VoluntarioService {
     return this.http.post<Voluntario>(this.voluntariosUrl, voluntario, httpOptions)
       .pipe(
         tap(voluntarios => this.log('voluntario cadastraso')),
-        catchError(this.handleError<Voluntario>('addHero'))
+        catchError(this.handleError<Voluntario>('addVoluntario'))
       );
+  }
+
+  updateVoluntario (voluntario: Voluntario): Observable<Voluntario> {
+    return this.http.put(this.voluntariosUrl, voluntario, httpOptions)
+    .pipe(
+      tap(_ => this.log(`updated voluntario id=${voluntario.id}`)),
+      catchError(this.handleError<any>('updateVoluntario'))
+    );
+  }
+
+  deleteVoluntario (id: number): Observable<Voluntario> {
+    const url = `${this.voluntariosUrl}/${id}`;
+
+    return this.http.delete<Voluntario>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted voluntario id=${id}`)),
+      catchError(this.handleError<Voluntario>('deleteVoluntario'))
+    );
   }
 
   /**
