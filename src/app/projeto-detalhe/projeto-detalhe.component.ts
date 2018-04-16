@@ -40,7 +40,7 @@ export class ProjetoDetalheComponent implements OnInit {
       recursosCasaDoCaminho: [''],
       sustentabilidadeDoProjeto: [''],
       cronogramaAtividades: [''],
-      equpeExecutora: ['']
+      equipeExecutora: ['']
     });
   }
 

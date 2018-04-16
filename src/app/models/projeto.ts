@@ -1,3 +1,5 @@
+import { Voluntario } from "./voluntario";
+
 export class Projeto {
 	id: number;
 	nome: String;
@@ -10,4 +12,5 @@ export class Projeto {
 	sustentabilidadeDoProjeto: String;
 	cronogramaAtividades: String;
 	equpeExecutora: String;
+	voluntarios: Voluntario[];
 }

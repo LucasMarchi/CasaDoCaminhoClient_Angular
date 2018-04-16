@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Projeto } from './models/projeto';
+import { Voluntario } from './models/voluntario';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,6 +34,15 @@ export class ProjetoService {
       .pipe(
         tap(_ => this.log(`fetched projeto`)),
         catchError(this.handleError('getProjeto', []))
+      );
+  }
+
+  getVoluntariosNaoAssociados (id: number): Observable<Voluntario[]> {
+    const url = `${this.projetoesUrl}/${id}/voluntarios/naoassociados`;
+    return this.http.get<Voluntario[]>(url)
+      .pipe(
+        tap(_ => this.log(`fetched voluntarios nao associados`)),
+        catchError(this.handleError('getVoluntariosNaoAssociados', []))
       );
   }
 

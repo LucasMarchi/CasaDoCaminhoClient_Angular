@@ -31,6 +31,8 @@ import { ProjetoCadastroComponent } from './projeto-cadastro/projeto-cadastro.co
 import { ProjetoDetalheComponent } from './projeto-detalhe/projeto-detalhe.component';
 import { ProjetosComponent } from './projetos/projetos.component';
 import { BeneficiarioPerfilComponent } from './beneficiario-perfil/beneficiario-perfil.component';
+import { ProjetoVoluntariosComponent } from './projeto-voluntarios/projeto-voluntarios.component';
+import { UtilService } from './util.service';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { BeneficiarioPerfilComponent } from './beneficiario-perfil/beneficiario-
     ProjetoCadastroComponent,
     ProjetoDetalheComponent,
     ProjetosComponent,
-    BeneficiarioPerfilComponent
+    BeneficiarioPerfilComponent,
+    ProjetoVoluntariosComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { BeneficiarioPerfilComponent } from './beneficiario-perfil/beneficiario-
     BeneficiarioService,
     DoadorService,
     ProjetoService,
+    UtilService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

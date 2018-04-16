@@ -1,0 +1,102 @@
+<br>
+<div fxLayout="row">
+  <span class="spacer"></span>
+  <div fxFlexAlign="end">
+    <button mat-raised-button color="primary" type="submit" (click)="$event.preventDefault(); showDessasociados = !showDessasociados">
+      Associar Voluntários
+    </button>
+  </div>
+</div>
+<div *ngIf="showDessasociados">
+  <h3>Desassociados</h3>
+  <div style="display: flex">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilterNaoAssociados($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSourceVoluntariosNaoAssociados" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> CPF </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.cpf}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="excluir">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Excluir </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button type="submit" (click)="associar(row, $event)">
+          <mat-icon>check</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</div>
+
+<br>
+<div>
+
+  <h3>Associados</h3>
+
+  <div style="display: flex">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilterAssociados($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSourceVoluntariosAssociados" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> CPF </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.cpf}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="excluir">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Excluir </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button type="submit" (click)="desassociar(row, $event)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+</div>

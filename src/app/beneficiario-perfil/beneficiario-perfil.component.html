@@ -2,7 +2,7 @@
   <form [formGroup]="formulario" (ngSubmit)="update()">
     <div fxLayout="row">
       <div fxFlexAlign="start">
-        <button mat-icon-button type="submit" routerLink="/home">
+        <button mat-icon-button type="submit" routerLink="/beneficiarios">
           <mat-icon>arrow_back</mat-icon>
         </button>
       </div>
@@ -13,16 +13,202 @@
         </button>
       </div>
     </div>
+    <br>
 
     <div fxLayout="column" fxLayoutAlign="center">
-      <mat-form-field>
-        <input matInput [(ngModel)]="beneficiario.perfil.escolaridade" placeholder="Escolaridade" formControlName="escolaridade" name="escolaridade">
-      </mat-form-field>
-      <div *ngIf="formulario.controls.escolaridade.invalid && formulario.controls.escolaridade.touched">
-        Nome obrigatório
-      </div>
+      <label for="escolaridade">
+        <strong>Escolaridade:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.escolaridade" formControlName="escolaridade" name="escolaridade" id="escolaridade">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let escolaridade of escolaridadeOpcoes" [value]="escolaridade" class="radio-button">
+          {{escolaridade}}
+        </mat-radio-button>
+      </mat-radio-group>
       <br>
-      
+
+      <label for="moradia">
+        <strong>Moradia:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.moradia" formControlName="moradia" name="moradia" id="moradia">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let moradia of moradiaOpcoes" [value]="moradia" class="radio-button">
+          {{moradia}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="agua">
+        <strong>Água:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.agua" formControlName="agua" name="agua" id="agua">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let agua of aguaOpcoes" [value]="agua" class="radio-button">
+          {{agua}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="esgoto">
+        <strong>Esgoto:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.esgoto" formControlName="esgoto" name="esgoto" id="esgoto">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let esgoto of esgotoOpcoes" [value]="esgoto" class="radio-button">
+          {{esgoto}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="coletaDeLixo">
+        <strong>Coleta de Lixo:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.coletaDeLixo" formControlName="coletaDeLixo" name="coletaDeLixo" id="coletaDeLixo">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="banheiroDentro">
+        <strong>Banheiro Dentro:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.banheiroDentro" formControlName="banheiroDentro" name="banheiroDentro"
+        id="banheiroDentro">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="chuveiro">
+        <strong>Chuveiro:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.chuveiro" formControlName="chuveiro" name="chuveiro" id="chuveiro">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="correio">
+        <strong>Correio:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.correio" formControlName="correio" name="correio" id="correio">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="janelas">
+        <strong>Janelas:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.janelas" formControlName="janelas" name="janelas" id="janelas">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label for="tanque">
+        <strong>Tanque:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.tanque" formControlName="tanque" name="tanque" id="tanque">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <label>
+        <strong>Problemas Familiares:</strong>
+      </label>
+      <section fxLayout="column" fxLayoutAlign="strat">
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.alcoolismo" formControlName="alcoolismo" name="alcoolismo" id="alcoolismo">Alcolismo</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.outrasDoencas" formControlName="outrasDoencas" name="outrasDoencas" id="outrasDoencas">Outras Doenças</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.morte" formControlName="morte" name="morte" id="morte">Morte</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.abandono" formControlName="abandono" name="abandono" id="abandono">Abandono</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.desemprego" formControlName="desemprego" name="desemprego" id="desemprego">Desemprego</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.subemprego" formControlName="subemprego" name="subemprego" id="subemprego">Subemprego</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.mudancaEmprego" formControlName="mudancaEmprego" name="mudancaEmprego" id="mudancaEmprego">Mudança Emprego</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.mudancaMoradia" formControlName="mudancaMoradia" name="mudancaMoradia" id="mudancaMoradia">Mudança Moradia</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.mudancaCidade" formControlName="mudancaCidade" name="mudancaCidade" id="mudancaCidade">Mudança Cidade</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.violenciaDomestica" formControlName="violenciaDomestica" name="violenciaDomestica" id="violenciaDomestica">Violência Doméstica</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.deficienciaFisica" formControlName="deficienciaFisica" name="deficienciaFisica" id="deficienciaFisica">Deficiência Fisica</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.problemasFamiliares.deficienciaMental" formControlName="deficienciaMental" name="deficienciaMental" id="deficienciaMental">Deficiência Mental</mat-checkbox>
+      </section>
+      <br>
+
+      <label>
+        <strong>Bens Familiares:</strong>
+      </label>
+      <section fxLayout="column" fxLayoutAlign="strat">
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.carro" formControlName="carro" name="carro" id="carro">Carro</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.moto" formControlName="moto" name="moto" id="moto">Moto</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.televisao" formControlName="televisao" name="televisao" id="televisao">Televisão</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.dvd" formControlName="dvd" name="dvd" id="dvd">DVD</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.tvPaga" formControlName="tvPagaBens" name="tvPagaBens" id="tvPagaBens">Televisão Paga</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.geladeira" formControlName="geladeira" name="geladeira" id="geladeira">Geladeira</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.lavRoupas" formControlName="lavRoupas" name="lavRoupas" id="lavRoupas">Lav.Roupas</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.secRoupas" formControlName="secRoupas" name="secRoupas" id="secRoupas">Sec.Roupas</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.lavLouca" formControlName="lavLouca" name="lavLouca" id="lavLouca">lav.Louca</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.computador" formControlName="computador" name="computador" id="computador">Computador</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.videoGame" formControlName="videoGame" name="videoGame" id="videoGame">Vídeo Game</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.internet" formControlName="internetBens" name="internetBens" id="internetBens">Internet</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.freezer" formControlName="freezer" name="freezer" id="freezer">Freezer</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.microondas" formControlName="microondas" name="microondas" id="microondas">Microondas</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.apGinastica" formControlName="apGinastica" name="apGinastica" id="apGinastica">Ap.Ginástica</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.bensFamiliares.outros" formControlName="outrosBens" name="outrosBens" id="outrosBens">Outros</mat-checkbox>
+      </section>
+      <br>
+
+      <label>
+        <strong>Despesas Familiares:</strong>
+      </label>
+      <section fxLayout="column" fxLayoutAlign="strat">
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.aluguel" formControlName="aluguel" name="aluguel" id="aluguel">Aluguel</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.prestacaoCasa" formControlName="prestacaoCasa" name="prestacaoCasa" id="prestacaoCasa">Prestação da Casa</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.alimentacao" formControlName="alimentacao" name="alimentacao" id="alimentacao">Alimentação</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.remedios" formControlName="remedios" name="remedios" id="remedios">Remédios</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.roupas" formControlName="roupas" name="roupas" id="roupas">Roupas</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.calcados" formControlName="calcados" name="calcados" id="calcados">Calçados</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.transportePublico" formControlName="transportePublico" name="transportePublico" id="transportePublico">Transporte Público</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.combustivel" formControlName="combustivel" name="combustivel" id="combustivel">Combustível</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.mensalidadeEscolar" formControlName="mensalidadeEscolar" name="mensalidadeEscolar" id="mensalidadeEscolar">Mensalidade Escolar</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.convenioMedico" formControlName="convenioMedico" name="convenioMedico" id="convenioMedico">Convênio Médico</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.academia" formControlName="academia" name="academia" id="academia">Academia</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.cursosLinguas" formControlName="cursosLinguas" name="cursosLinguas" id="cursosLinguas">Cursos de Línguas</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.tvPaga" formControlName="tvPagaDespesas" name="tvPagaDespesas" id="tvPagaDespesas">Televisão Paga</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.internet" formControlName="internetDespesas" name="internetDespesas" id="internetDespesas">Internet</mat-checkbox>
+        <mat-checkbox  class="check-box" [(ngModel)]="beneficiario.perfil.despesasFamiliares.outros" formControlName="outrosDespesas" name="outrosDespesas" id="outrosDespesas">Outros</mat-checkbox>
+      </section>
+      <br>
+
+      <label for="recebeBeneficioPublico">
+        <strong>Você (ou familiar) recebe algum benefício público:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.recebeBeneficioPublico" formControlName="recebeBeneficioPublico" name="recebeBeneficioPublico" id="recebeBeneficioPublico">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.perfil.beneficioPublico" placeholder="Se sim, indique qual" formControlName="beneficioPublico" name="beneficioPublico">
+      </mat-form-field>
+      <br>
+
+      <label for="recebeBeneficioParticular">
+        <strong>Você (ou familiar) recebe algum benefício particular:</strong>
+      </label>
+      <mat-radio-group [(ngModel)]="beneficiario.perfil.recebeBeneficioParticular" formControlName="recebeBeneficioParticular" name="recebeBeneficioParticular" id="recebeBeneficioParticular">
+        <mat-radio-button fxLayout="column" fxLayoutAlign="strat" *ngFor="let resp of ['sim', 'nao']" [value]="resp" class="radio-button">
+          {{resp}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="beneficiario.perfil.beneficioParticular" placeholder="Se sim, indique qual" formControlName="beneficioParticular" name="beneficioParticular">
+      </mat-form-field>
+      <br>
+
     </div>
   </form>
 </mat-card>
