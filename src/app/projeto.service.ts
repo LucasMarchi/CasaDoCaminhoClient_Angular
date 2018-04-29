@@ -7,6 +7,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Projeto } from './models/projeto';
 import { Voluntario } from './models/voluntario';
+import { Beneficiario } from './models/beneficiario';
+import { Doador } from './models/doador';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -37,15 +39,6 @@ export class ProjetoService {
       );
   }
 
-  getVoluntariosNaoAssociados (id: number): Observable<Voluntario[]> {
-    const url = `${this.projetoesUrl}/${id}/voluntarios/naoassociados`;
-    return this.http.get<Voluntario[]>(url)
-      .pipe(
-        tap(_ => this.log(`fetched voluntarios nao associados`)),
-        catchError(this.handleError('getVoluntariosNaoAssociados', []))
-      );
-  }
-
   add (projeto: Projeto): Observable<Projeto> {
     return this.http.post<Projeto>(this.projetoesUrl, projeto, httpOptions)
       .pipe(
@@ -69,6 +62,33 @@ export class ProjetoService {
       tap(_ => this.log(`deleted Projeto id=${id}`)),
       catchError(this.handleError<Projeto>('deleteProjeto'))
     );
+  }
+
+  getVoluntariosNaoAssociados (id: number): Observable<Voluntario[]> {
+    const url = `${this.projetoesUrl}/${id}/voluntarios/naoassociados`;
+    return this.http.get<Voluntario[]>(url)
+      .pipe(
+        tap(_ => this.log(`fetched voluntarios nao associados`)),
+        catchError(this.handleError('getVoluntariosNaoAssociados', []))
+      );
+  }
+
+  getBeneficiariosNaoAssociados (id: number): Observable<Beneficiario[]> {
+    const url = `${this.projetoesUrl}/${id}/beneficiarios/naoassociados`;
+    return this.http.get<Beneficiario[]>(url)
+      .pipe(
+        tap(_ => this.log(`fetched beneficiarios nao associados`)),
+        catchError(this.handleError('getBeneficiariosNaoAssociados', []))
+      );
+  }
+
+  getDoadoresNaoAssociados (id: number): Observable<Doador[]> {
+    const url = `${this.projetoesUrl}/${id}/doadores/naoassociados`;
+    return this.http.get<Doador[]>(url)
+      .pipe(
+        tap(_ => this.log(`fetched doadores nao associados`)),
+        catchError(this.handleError('getDoadoresNaoAssociados', []))
+      );
   }
 
   /**

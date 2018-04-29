@@ -30,6 +30,15 @@
         <mat-cell *matCellDef="let row"> {{row.telefone}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="familiares">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Familiares </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button type="submit" routerLink="/beneficiario/{{row.id}}/familiares">
+            <mat-icon>people</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="perfil">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
         <mat-cell *matCellDef="let row">
@@ -38,7 +47,7 @@
           </button>
         </mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="editar">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
           <mat-cell *matCellDef="let row">

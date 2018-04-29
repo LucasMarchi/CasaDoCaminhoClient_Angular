@@ -1,4 +1,5 @@
 import { Perfil } from "./perfil";
+import { Familiar } from "./familiar";
 
 export class Beneficiario {
     id: number;
@@ -23,4 +24,5 @@ export class Beneficiario {
 	identidade: String
 	cpf: String
 	perfil: Perfil;
+	familiares: Familiar[];
 }

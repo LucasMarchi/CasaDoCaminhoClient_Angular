@@ -5,7 +5,6 @@ import { VoluntarioService } from '../voluntario.service';
 import { Projeto } from '../models/projeto';
 import { ProjetoService } from '../projeto.service';
 import { UtilService } from '../util.service';
-import { utils } from 'protractor';
 
 @Component({
   selector: 'app-projeto-voluntarios',
@@ -14,7 +13,7 @@ import { utils } from 'protractor';
 })
 export class ProjetoVoluntariosComponent implements OnInit {
 
-  displayedColumns = ['id', 'nome', 'cpf', 'excluir'];
+  displayedColumns = ['id', 'nome', 'cpf', 'associar_desassociar'];
   dataSourceVoluntariosAssociados: MatTableDataSource<Voluntario>;
   dataSourceVoluntariosNaoAssociados: MatTableDataSource<Voluntario>;
 

@@ -33,6 +33,9 @@ import { ProjetosComponent } from './projetos/projetos.component';
 import { BeneficiarioPerfilComponent } from './beneficiario-perfil/beneficiario-perfil.component';
 import { ProjetoVoluntariosComponent } from './projeto-voluntarios/projeto-voluntarios.component';
 import { UtilService } from './util.service';
+import { ProjetoBeneficiariosComponent } from './projeto-beneficiarios/projeto-beneficiarios.component';
+import { ProjetoDoadoresComponent } from './projeto-doadores/projeto-doadores.component';
+import { BeneficiarioFamiliaresComponent } from './beneficiario-familiares/beneficiario-familiares.component';
 
 
 @NgModule({
@@ -54,7 +57,10 @@ import { UtilService } from './util.service';
     ProjetoDetalheComponent,
     ProjetosComponent,
     BeneficiarioPerfilComponent,
-    ProjetoVoluntariosComponent
+    ProjetoVoluntariosComponent,
+    ProjetoBeneficiariosComponent,
+    ProjetoDoadoresComponent,
+    BeneficiarioFamiliaresComponent
   ],
   imports: [
     BrowserModule,

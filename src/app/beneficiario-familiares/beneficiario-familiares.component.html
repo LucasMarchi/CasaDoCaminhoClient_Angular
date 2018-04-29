@@ -1,0 +1,66 @@
+<mat-card *ngIf="beneficiario">
+  <form (ngSubmit)="update()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/beneficiarios">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <br>
+
+    <div>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.nome" placeholder="Nome" name="nome">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.parentesco" placeholder="Parentesco" name="parentesco">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.escolaridade" placeholder="Escolaridade" name="escolaridade">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.convenio" placeholder="Convênio" name="convenio">
+        </mat-form-field> 
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.ocupacao" placeholder="Ocupação" name="ocupacao">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.rendaMensal" placeholder="Renda Mensal" name="rendaMensal">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="adicionarFamiliar($event)">Adicionar</button>
+      <div>
+        <div *ngFor="let familiar of beneficiario.familiares;" class="familiares">
+          <div fxLayout="row" class="familiares-botoes">
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="editar(familiar, $event)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="remover(familiar, $event)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <label><strong>Nome: </strong></label><span>{{familiar.nome}}</span><br><br>
+          <label><strong>Parentesco: </strong></label><span>{{familiar.parentesco}}</span><br><br>
+          <label><strong>Escolaridade: </strong></label><span>{{familiar.escolaridade}}</span><br><br>
+          <label><strong>Convênio: </strong></label><span>{{familiar.convenio}}</span><br><br>
+          <label><strong>Ocupação: </strong></label><span>{{familiar.ocupacao}}</span><br><br>
+          <label><strong>Renda Mensal: </strong></label><span>{{familiar.rendaMensal}}</span>
+        </div>
+      </div>
+
+
+    </div>
+
+  </form>
+</mat-card>

@@ -76,6 +76,7 @@ export class BeneficiarioPerfilComponent implements OnInit {
   }
 
   update(): void {
+    console.log(this.beneficiario);
     this.beneficiarioService.update(this.beneficiario)
       .subscribe(() => this.goBack());
   }

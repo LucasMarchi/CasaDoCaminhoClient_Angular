@@ -67,9 +67,19 @@
 
         </div>
       </mat-tab>
+
       <mat-tab label="Voluntários">
         <app-projeto-voluntarios [projeto]="projeto"></app-projeto-voluntarios>
       </mat-tab>
+
+      <mat-tab label="Beneficiários">
+        <app-projeto-beneficiarios [projeto]="projeto"></app-projeto-beneficiarios>
+      </mat-tab>
+
+      <mat-tab label="Doadores">
+        <app-projeto-doadores [projeto]="projeto"></app-projeto-doadores>
+      </mat-tab>
+
     </mat-tab-group>
   </form>
 </mat-card>

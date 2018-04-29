@@ -1,4 +1,6 @@
 import { Voluntario } from "./voluntario";
+import { Beneficiario } from "./beneficiario";
+import { Doador } from "./doador";
 
 export class Projeto {
 	id: number;
@@ -13,4 +15,6 @@ export class Projeto {
 	cronogramaAtividades: String;
 	equpeExecutora: String;
 	voluntarios: Voluntario[];
+	beneficiarios: Beneficiario[];
+	doadores: Doador[];
 }

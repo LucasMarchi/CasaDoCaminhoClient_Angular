@@ -10,7 +10,7 @@ import { BeneficiarioService } from '../beneficiarios.service';
 })
 export class BeneficiariosComponent implements OnInit {
 
-  displayedColumns = ['id', 'nome', 'cpf', 'telefone', 'perfil', 'editar', 'excluir'];
+  displayedColumns = ['id', 'nome', 'cpf', 'telefone', 'familiares', 'perfil', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Beneficiario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

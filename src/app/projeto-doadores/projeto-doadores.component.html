@@ -9,7 +9,7 @@
     </mat-form-field>
   </div>
 
-  <mat-table [dataSource]="dataSourceVoluntariosAssociados" matSort>
+  <mat-table [dataSource]="dataSourceDoadoresAssociados" matSort>
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -21,11 +21,6 @@
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="cpf">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> CPF </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.cpf}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="associar_desassociar">
@@ -53,7 +48,7 @@
       </mat-form-field>
     </div>
   
-    <mat-table [dataSource]="dataSourceVoluntariosNaoAssociados" matSort>
+    <mat-table [dataSource]="dataSourceDoadoresNaoAssociados" matSort>
   
       <!-- ID Column -->
       <ng-container matColumnDef="id">
@@ -65,11 +60,6 @@
       <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="cpf">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> CPF </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.cpf}} </mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="associar_desassociar">

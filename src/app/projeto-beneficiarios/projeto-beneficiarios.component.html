@@ -9,7 +9,7 @@
     </mat-form-field>
   </div>
 
-  <mat-table [dataSource]="dataSourceVoluntariosAssociados" matSort>
+  <mat-table [dataSource]="dataSourceBeneficiariosAssociados" matSort>
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -53,7 +53,7 @@
       </mat-form-field>
     </div>
   
-    <mat-table [dataSource]="dataSourceVoluntariosNaoAssociados" matSort>
+    <mat-table [dataSource]="dataSourceBeneficiariosNaoAssociados" matSort>
   
       <!-- ID Column -->
       <ng-container matColumnDef="id">
