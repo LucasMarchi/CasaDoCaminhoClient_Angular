@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Voluntario } from '../models/voluntario'; '../models/voluntario';
 import { VoluntarioService } from '../voluntario.service';
+import { RelatorioVoluntarioService } from '../relatorio-voluntario.service';
 
 @Component({
   selector: 'app-voluntario-detalhe',
@@ -20,7 +21,8 @@ export class VoluntarioDetalheComponent implements OnInit {
     private route: ActivatedRoute,
     private voluntarioService: VoluntarioService,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private relatorioVoluntarioService: RelatorioVoluntarioService
   ) {
     this.createForm();
   }
@@ -52,6 +54,11 @@ export class VoluntarioDetalheComponent implements OnInit {
   update(): void {
     this.voluntarioService.updateVoluntario(this.voluntario)
       .subscribe(() => this.goBack());
+  }
+
+  download(event){
+    event.preventDefault();
+    this.relatorioVoluntarioService.gerarPDF(this.voluntario);
   }
 
   goBack(): void {

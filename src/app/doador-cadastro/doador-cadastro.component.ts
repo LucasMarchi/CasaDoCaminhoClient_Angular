@@ -25,11 +25,19 @@ export class DoadorCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.doador.tipo = "Física";
   }
 
   createForm() {
     this.formulario = this.formBuilder.group({
-      nome: ['', Validators.required]
+      tipo: ['', Validators.required],
+      nome: ['', Validators.required],
+      documento: ['', Validators.required],
+      endereco: ['', Validators.required],
+      bairro: ['', Validators.required],
+      cep: ['', Validators.required],
+      telefone: ['', Validators.required],
+      email: ['', Validators.required]
     });
   }
 

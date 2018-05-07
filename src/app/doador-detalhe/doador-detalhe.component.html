@@ -2,7 +2,7 @@
   <form [formGroup]="formulario" (ngSubmit)="update()">
     <div fxLayout="row">
       <div fxFlexAlign="start">
-        <button mat-icon-button type="submit" routerLink="/home">
+        <button mat-icon-button type="submit" routerLink="/doadores">
           <mat-icon>arrow_back</mat-icon>
         </button>
       </div>
@@ -14,13 +14,57 @@
       </div>
     </div>
 
+    <br>
+
     <div fxLayout="column" fxLayoutAlign="center">
+
+      <mat-radio-group [(ngModel)]="doador.tipo" formControlName="tipo" name="tipo" id="tipo">
+        <mat-radio-button fxFlexOffset="7px" *ngFor="let tipo of ['Física', 'Jurídica']" [value]="tipo" class="radio-button">
+          {{tipo}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <br>
+
       <mat-form-field>
-        <input matInput [(ngModel)]="doador.nome" placeholder="Nome" formControlName="nome" name="nome">
+        <input matInput [(ngModel)]="doador.nome" placeholder="{{doador.tipo == 'Física' ? 'Nome' : 'Razão Social'}}" formControlName="nome"
+          name="nome">
       </mat-form-field>
       <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
         Nome obrigatório
       </div>
+      <br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.documento" placeholder="{{doador.tipo == 'Física' ? 'CPF' : 'CNPJ'}}" formControlName="documento"
+          name="documento">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.endereco" placeholder="endereco" formControlName="endereco" name="endereco">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.bairro" placeholder="bairro" formControlName="bairro" name="bairro">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.cep" placeholder="cep" formControlName="cep" name="cep">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.telefone" placeholder="telefone" formControlName="telefone" name="telefone">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="doador.email" placeholder="email" formControlName="email" name="email">
+      </mat-form-field>
+      <br>
+
     </div>
   </form>
 </mat-card>

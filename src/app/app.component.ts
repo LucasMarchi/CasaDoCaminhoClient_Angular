@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
@@ -7,5 +7,10 @@ import { OktaAuthService } from '@okta/okta-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  events: string[] = [];
+  deveAbrir: boolean;
+
   constructor(public oktaAuthService: OktaAuthService) { }
+
 }

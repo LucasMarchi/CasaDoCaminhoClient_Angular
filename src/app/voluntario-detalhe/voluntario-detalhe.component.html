@@ -11,6 +11,9 @@
           <button mat-icon-button type="submit" [disabled]="formulario.invalid">
             <mat-icon>check</mat-icon>
           </button>
+          <button mat-icon-button type="submit" (click)="download($event)">
+            <mat-icon>file_download</mat-icon>
+          </button>
         </div>
       </div>
   

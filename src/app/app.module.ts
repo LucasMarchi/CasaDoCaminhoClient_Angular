@@ -36,7 +36,7 @@ import { UtilService } from './util.service';
 import { ProjetoBeneficiariosComponent } from './projeto-beneficiarios/projeto-beneficiarios.component';
 import { ProjetoDoadoresComponent } from './projeto-doadores/projeto-doadores.component';
 import { BeneficiarioFamiliaresComponent } from './beneficiario-familiares/beneficiario-familiares.component';
-
+import { RelatorioVoluntarioService } from './relatorio-voluntario.service';
 
 @NgModule({
   declarations: [
@@ -78,6 +78,7 @@ import { BeneficiarioFamiliaresComponent } from './beneficiario-familiares/benef
     DoadorService,
     ProjetoService,
     UtilService,
+    RelatorioVoluntarioService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

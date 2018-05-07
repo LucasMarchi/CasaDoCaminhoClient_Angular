@@ -31,10 +31,17 @@ export class DoadorDetalheComponent implements OnInit {
 
   createForm() {
     this.formulario = this.formBuilder.group({
-      nome: ['', Validators.required]
+      tipo: ['', Validators.required],
+      nome: ['', Validators.required],
+      documento: ['', Validators.required],
+      endereco: ['', Validators.required],
+      bairro: ['', Validators.required],
+      cep: ['', Validators.required],
+      telefone: ['', Validators.required],
+      email: ['', Validators.required]
     });
   }
-
+  
   getDoador(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.doadorService.getById(id)
