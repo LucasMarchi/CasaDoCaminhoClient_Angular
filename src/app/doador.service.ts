@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class DoadorService {
 
-  private doadoresUrl = 'http://localhost:8080/doadores';
+  private doadoresUrl = 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/doadores';
 
   constructor(private http: HttpClient) { }
 

@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class VoluntarioService {
 
-  private voluntariosUrl = 'http://localhost:8080/voluntarios';
+  private voluntariosUrl = 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/voluntarios';
 
   constructor(private http: HttpClient) { }
 

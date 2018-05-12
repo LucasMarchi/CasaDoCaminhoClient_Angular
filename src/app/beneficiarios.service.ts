@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class BeneficiarioService {
 
-  private beneficiariosUrl = 'http://localhost:8080/beneficiarios';
+  private beneficiariosUrl = 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/beneficiarios';
 
   constructor(private http: HttpClient) { }
 
