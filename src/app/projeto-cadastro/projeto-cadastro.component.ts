@@ -38,7 +38,7 @@ export class ProjetoCadastroComponent implements OnInit {
       recursosCasaDoCaminho: [''],
       sustentabilidadeDoProjeto: [''],
       cronogramaAtividades: [''],
-      equpeExecutora: ['']
+      equipeExecutora: ['']
     });
   }
 

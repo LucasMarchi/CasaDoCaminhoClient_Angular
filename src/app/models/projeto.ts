@@ -13,7 +13,7 @@ export class Projeto {
 	recursosCasaDoCaminho: String;
 	sustentabilidadeDoProjeto: String;
 	cronogramaAtividades: String;
-	equpeExecutora: String;
+	equipeExecutora: String;
 	voluntarios: Voluntario[];
 	beneficiarios: Beneficiario[];
 	doadores: Doador[];
