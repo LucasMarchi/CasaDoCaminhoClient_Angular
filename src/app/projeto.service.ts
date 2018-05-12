@@ -17,7 +17,7 @@ const httpOptions = {
 @Injectable()
 export class ProjetoService {
 
-  private projetoesUrl = 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/projetos';
+  private projetoesUrl = 'https://casadocaminhoserver.herokuapp.com/projetos';
 
   constructor(private http: HttpClient) { }
 

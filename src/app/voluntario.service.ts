@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class VoluntarioService {
 
-  private voluntariosUrl = 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/voluntarios';
+  private voluntariosUrl = 'https://casadocaminhoserver.herokuapp.com/voluntarios';
 
   constructor(private http: HttpClient) { }
 
