@@ -2,7 +2,7 @@ sudo: required
 
 language: node_js
 node_js:
-  - "8"
+  - "10.2.1"
 
 branches:
   only:
@@ -14,4 +14,4 @@ before_script:
 
 script:
   - ng build --prod --base-href="https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/"
-  - angular-cli-ghpages
+  - angular-cli-ghpages --no-silent
