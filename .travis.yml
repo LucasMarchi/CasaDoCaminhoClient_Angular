@@ -14,4 +14,4 @@ before_script:
 
 script:
   - ng build --prod --base-href="https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/"
-  - angular-cli-ghpages --no-silent
+  - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/LucasMarchi/CasaDoCaminhoClient_Angular.git --name="LucasMarchi" --email=lucas-marchi@hotmail.com
