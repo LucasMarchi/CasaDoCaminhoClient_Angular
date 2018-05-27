@@ -17,12 +17,17 @@ import { ProjetoCadastroComponent } from './projeto-cadastro/projeto-cadastro.co
 import { ProjetoDetalheComponent } from './projeto-detalhe/projeto-detalhe.component';
 import { BeneficiarioPerfilComponent } from './beneficiario-perfil/beneficiario-perfil.component';
 import { BeneficiarioFamiliaresComponent } from './beneficiario-familiares/beneficiario-familiares.component';
+import { DoacaoComponent } from './doacao/doacao.component';
+import { DoacaoCadastroComponent } from './doacao-cadastro/doacao-cadastro.component';
+import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
 
+//local
 /*const config = {
   issuer: 'https://dev-271925.oktapreview.com/oauth2/default',
   redirectUri: 'http://localhost:4200/implicit/callback',
   clientId: '0oae6xajeyTn2UEvu0h7'
 };*/
+//prod
 const config = {
   issuer: 'https://dev-271925.oktapreview.com/oauth2/default',
   redirectUri: 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/implicit/callback',
@@ -35,6 +40,9 @@ const routes: Routes = [
   { path: 'voluntarios', component: VoluntariosComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'voluntario/cadastro', component: VoluntarioCadastroComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'voluntario/:id', component: VoluntarioDetalheComponent, canActivate: [ OktaAuthGuard ] },
+  { path: 'doacoes', component: DoacaoComponent, canActivate: [ OktaAuthGuard ] },
+  { path: 'doacao/cadastro', component: DoacaoCadastroComponent, canActivate: [ OktaAuthGuard ] },
+  { path: 'doacao/:id', component: DoacaoDetalheComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'beneficiarios', component: BeneficiariosComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'beneficiario/cadastro', component: BeneficiarioCadastroComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'beneficiario/:id', component: BeneficiarioDetalheComponent, canActivate: [ OktaAuthGuard ] },

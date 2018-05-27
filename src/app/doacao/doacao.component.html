@@ -1,0 +1,47 @@
+<div style="display: flex">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="doador">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Doador </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.doador.nome}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button type="submit" routerLink="/doacao/{{row.id}}">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="excluir">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Excluir </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button type="submit" (click)="excluir(row.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

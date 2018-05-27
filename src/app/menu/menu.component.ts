@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +9,7 @@ import { OktaAuthService } from '@okta/okta-angular';
 })
 export class MenuComponent implements OnInit {
 
+  @Input() sidenav: MatSidenav;
   constructor(public oktaAuthService: OktaAuthService) { }
 
   ngOnInit() {

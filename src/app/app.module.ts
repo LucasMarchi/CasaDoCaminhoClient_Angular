@@ -37,6 +37,10 @@ import { ProjetoBeneficiariosComponent } from './projeto-beneficiarios/projeto-b
 import { ProjetoDoadoresComponent } from './projeto-doadores/projeto-doadores.component';
 import { BeneficiarioFamiliaresComponent } from './beneficiario-familiares/beneficiario-familiares.component';
 import { RelatorioVoluntarioService } from './relatorio-voluntario.service';
+import { DoacaoComponent } from './doacao/doacao.component';
+import { DoacaoCadastroComponent } from './doacao-cadastro/doacao-cadastro.component';
+import { DoacaoService } from './doacao.service';
+import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,10 @@ import { RelatorioVoluntarioService } from './relatorio-voluntario.service';
     ProjetoVoluntariosComponent,
     ProjetoBeneficiariosComponent,
     ProjetoDoadoresComponent,
-    BeneficiarioFamiliaresComponent
+    BeneficiarioFamiliaresComponent,
+    DoacaoComponent,
+    DoacaoCadastroComponent,
+    DoacaoDetalheComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +86,7 @@ import { RelatorioVoluntarioService } from './relatorio-voluntario.service';
     ProjetoService,
     UtilService,
     RelatorioVoluntarioService,
+    DoacaoService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

@@ -27,6 +27,14 @@ export class DoadorService {
     );
   }
 
+  getByDocumento(documento: String): Observable<Doador> {
+    const url = `${this.doadoresUrl}/documento/${documento}`;
+    return this.http.get<Doador>(url).pipe(
+      tap(_ => this.log(`fetched Doador documento=${documento}`)),
+      catchError(this.handleError<Doador>(`getDoador documento=${documento}`))
+    );
+  }
+
   /** GET voluntarios from the server */
   getAll (): Observable<Doador[]> {
     return this.http.get<Doador[]>(this.doadoresUrl)

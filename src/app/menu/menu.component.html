@@ -1,12 +1,14 @@
 <mat-card color="primary" class="menu">
   <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span style="width: 10px"></span>
     <span>Casa do Caminho</span>
     <span class="spacer"></span>
-    <button mat-raised-button color="warn" *ngIf="oktaAuthService.isAuthenticated()"
-      (click)="oktaAuthService.logout()" [routerLink]="['/home']">Logout
+    <button mat-raised-button color="warn" *ngIf="oktaAuthService.isAuthenticated()" (click)="oktaAuthService.logout()" [routerLink]="['/home']">Logout
     </button>
-    <button mat-raised-button color="warn" *ngIf="!oktaAuthService.isAuthenticated()"
-          (click)="oktaAuthService.loginRedirect()">Login
+    <button mat-raised-button color="warn" *ngIf="!oktaAuthService.isAuthenticated()" (click)="oktaAuthService.loginRedirect()">Login
     </button>
   </mat-toolbar>
 </mat-card>

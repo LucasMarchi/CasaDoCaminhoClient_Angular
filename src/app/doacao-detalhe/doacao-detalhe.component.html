@@ -1,0 +1,72 @@
+<mat-card>
+  <form [formGroup]="formulario" (ngSubmit)="update()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/doacoes">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit" [disabled]="formulario.invalid">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <br>
+
+    <div>
+      <div fxLayout="column" fxLayoutAlign="center">
+
+        <label>
+          <strong>Doador</strong>
+        </label>
+        <mat-form-field>
+          <input matInput [(ngModel)]="doacao.doador.documento" formControlName="documento" name="documento">
+        </mat-form-field>
+        <br>
+
+        <div fxLayout="column" fxLayoutAlign="center">
+          <label>
+            <strong>Itens</strong>
+          </label>
+          <mat-form-field>
+            <input matInput [(ngModel)]="item.nome" placeholder="Nome" formControlName="nome" name="nome">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="item.quantidade" placeholder="Quantidade" formControlName="quantidade" name="quantidade">
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" (click)="adicionarItem($event)">Adicionar</button>
+
+      <div>
+        <div *ngFor="let item of doacao.itens;" class="itens">
+          <div fxLayout="row" class="itens-botoes">
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="editar(item, $event)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="remover(item, $event)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <label>
+            <strong>Nome: </strong>
+          </label>
+          <span>{{item.nome}}</span>
+          <br>
+          <br>
+          <label>
+            <strong>Item: </strong>
+          </label>
+          <span>{{item.quantidade}}</span>
+          <br>
+          <br>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</mat-card>
