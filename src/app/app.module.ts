@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './okta/auth.interceptor';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -41,6 +42,7 @@ import { DoacaoComponent } from './doacao/doacao.component';
 import { DoacaoCadastroComponent } from './doacao-cadastro/doacao-cadastro.component';
 import { DoacaoService } from './doacao.service';
 import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.componen
     BeneficiarioFamiliaresComponent,
     DoacaoComponent,
     DoacaoCadastroComponent,
-    DoacaoDetalheComponent
+    DoacaoDetalheComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,8 +79,12 @@ import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.componen
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    TextMaskModule,
     HttpClientModule,
     AppRoutingModule
+  ],
+  entryComponents: [
+    DialogComponent,
   ],
   providers: [
     VoluntarioService,

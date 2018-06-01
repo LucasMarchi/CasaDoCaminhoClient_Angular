@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { Beneficiario } from '../models/beneficiario';
 import { BeneficiarioService } from '../beneficiarios.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-beneficiarios',
@@ -10,18 +11,29 @@ import { BeneficiarioService } from '../beneficiarios.service';
 })
 export class BeneficiariosComponent implements OnInit {
 
-  displayedColumns = ['id', 'nome', 'cpf', 'telefone', 'familiares', 'perfil', 'editar', 'excluir'];
+  displayedColumns = ['nome', 'cpf', 'telefone', 'familiares', 'perfil', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Beneficiario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private beneficiarioService: BeneficiarioService) { }
+  constructor(private beneficiarioService: BeneficiarioService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAll();
   }
 
+  openDialog(id: number): void {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(resposta => {
+      console.log(resposta);
+      if(resposta != null) this.excluir(id);
+    });
+  }
+  
   getAll(): void {
     this.beneficiarioService.getAll()
     .subscribe(beneficiarios => {

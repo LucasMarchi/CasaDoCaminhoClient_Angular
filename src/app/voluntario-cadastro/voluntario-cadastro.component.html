@@ -16,19 +16,22 @@
 
     <div fxLayout="column" fxLayoutAlign="center">
       <mat-form-field>
-        <input matInput [(ngModel)]="voluntario.nome" placeholder="Nome" formControlName="nome" name="nome">
+        <input matInput [(ngModel)]="voluntario.nome" placeholder="Nome*" formControlName="nome" name="nome">
       </mat-form-field>
-      <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
+      <mat-error *ngIf="formulario.controls.nome.hasError('required') && (formulario.controls.nome.touched)">
         Nome obrigatório
-      </div>
+      </mat-error>
       <br>
       <mat-form-field>
         <input matInput [(ngModel)]="voluntario.identidade" placeholder="Identidade" formControlName="identidade" name="identidade">
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput [(ngModel)]="voluntario.cpf" placeholder="CPF" formControlName="cpf" name="cpf">
+        <input matInput [textMask]="{mask: mask}" [(ngModel)]="voluntario.cpf" placeholder="CPF*" formControlName="cpf" name="cpf">
       </mat-form-field>
+      <mat-error *ngIf="formulario.controls.cpf.hasError('required') && (formulario.controls.cpf.touched)">
+        CPF obrigatório
+      </mat-error>
       <br>
       <mat-form-field>
         <input matInput [(ngModel)]="voluntario.nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade" name="nacionalidade">

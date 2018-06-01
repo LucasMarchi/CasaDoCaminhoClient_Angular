@@ -81,9 +81,9 @@ export class VoluntarioService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a VoluntarioService message with the MessageService */
   private log(message: string) {
-    console.log('HeroService: ' + message);
+    console.log('VoluntarioService: ' + message);
   }
 
 }

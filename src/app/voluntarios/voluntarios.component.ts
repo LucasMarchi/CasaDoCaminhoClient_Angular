@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { Voluntario } from '../models/voluntario'; '../models/voluntario';
 import { VoluntarioService } from '../voluntario.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 
 @Component({
@@ -10,16 +11,27 @@ import { VoluntarioService } from '../voluntario.service';
   styleUrls: ['./voluntarios.component.css']
 })
 export class VoluntariosComponent implements OnInit {
-  displayedColumns = ['id', 'nome', 'cpf', 'telefone', 'editar', 'excluir'];
+  displayedColumns = ['nome', 'cpf', 'telefone', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Voluntario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private voluntarioService: VoluntarioService) { }
+  constructor(private voluntarioService: VoluntarioService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getVoluntarios();
+  }
+
+  openDialog(id: number): void {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(resposta => {
+      console.log(resposta);
+      if(resposta != null) this.excluir(id);
+    });
   }
 
   getVoluntarios(): void {

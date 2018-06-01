@@ -1,18 +1,12 @@
 <div style="display: flex">
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
   </mat-form-field>
 </div>
 
 <div class="mat-elevation-z8">
 
   <mat-table [dataSource]="dataSource" matSort>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-    </ng-container>
 
     <!-- Progress Column -->
     <ng-container matColumnDef="doador">
@@ -32,7 +26,7 @@
     <ng-container matColumnDef="excluir">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Excluir </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button type="submit" (click)="excluir(row.id)">
+        <button mat-icon-button type="submit" (click)="openDialog(row.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>

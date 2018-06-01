@@ -1,6 +1,6 @@
 <mat-card color="primary" class="menu">
   <mat-toolbar color="primary">
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <button mat-icon-button *ngIf="oktaAuthService.isAuthenticated()" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <span style="width: 10px"></span>

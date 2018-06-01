@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { Doador } from '../models/doador';
 import { DoadorService } from '../doador.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-doadores',
@@ -10,16 +11,27 @@ import { DoadorService } from '../doador.service';
 })
 export class DoadoresComponent implements OnInit {
 
-  displayedColumns = ['id', 'nome', 'editar', 'excluir'];
+  displayedColumns = ['nome', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Doador>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private doadorService: DoadorService) { }
+  constructor(private doadorService: DoadorService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAll();
+  }
+
+  openDialog(id: number): void {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(resposta => {
+      console.log(resposta);
+      if(resposta != null) this.excluir(id);
+    });
   }
 
   getAll(): void {

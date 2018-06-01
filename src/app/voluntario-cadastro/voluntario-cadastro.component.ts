@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Voluntario } from '../models/voluntario';
 import { VoluntarioService } from '../voluntario.service';
-
+import { CPF } from '../consts/utils.const';
 
 @Component({
   selector: 'app-voluntario-cadastro',
@@ -15,6 +15,7 @@ export class VoluntarioCadastroComponent implements OnInit {
 
   voluntario: Voluntario = new Voluntario();
   formulario: FormGroup;
+  public mask = CPF;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +33,7 @@ export class VoluntarioCadastroComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome: ['', Validators.required ],
       identidade: [''],
-      cpf: [''],
+      cpf: ['', Validators.required],
       nacionalidade: [''],
       endereco: [''],
       bairro: [''],

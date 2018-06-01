@@ -1,62 +1,65 @@
 <mat-card *ngIf="voluntario">
-    <form [formGroup]="formulario" (ngSubmit)="update()">
-      <div fxLayout="row">
-        <div fxFlexAlign="start">
-          <button mat-icon-button type="submit" routerLink="/voluntarios">
-            <mat-icon>arrow_back</mat-icon>
-          </button>
-        </div>
-        <span class="spacer"></span>
-        <div fxFlexAlign="end">
-          <button mat-icon-button type="submit" [disabled]="formulario.invalid">
-            <mat-icon>check</mat-icon>
-          </button>
-          <button mat-icon-button type="submit" (click)="download($event)">
-            <mat-icon>file_download</mat-icon>
-          </button>
-        </div>
+  <form [formGroup]="formulario" (ngSubmit)="update()">
+    <div fxLayout="row">
+      <div fxFlexAlign="start">
+        <button mat-icon-button type="submit" routerLink="/voluntarios">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
       </div>
-  
-      <div fxLayout="column" fxLayoutAlign="center">
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.nome" placeholder="Nome" formControlName="nome" name="nome">
-        </mat-form-field>
-        <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
-          Nome obrigatório
-        </div>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.identidade" placeholder="Identidade" formControlName="identidade" name="identidade">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.cpf" placeholder="CPF" formControlName="cpf" name="cpf">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade" name="nacionalidade">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.endereco" placeholder="Endereo (Rua, nº,  bloco, apto.)" formControlName="endereco"
-            name="endereco">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.bairro" placeholder="Bairro" formControlName="bairro" name="bairro">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.cep" placeholder="CEP" formControlName="cep" name="cep">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.estadoCivil" placeholder="Estado Civil" formControlName="estadoCivil" name="estadoCivil">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <input matInput [(ngModel)]="voluntario.telefone" placeholder="Telefone" formControlName="telefone" name="telefone">
-        </mat-form-field>
+      <span class="spacer"></span>
+      <div fxFlexAlign="end">
+        <button mat-icon-button type="submit" [disabled]="formulario.invalid">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button type="submit" (click)="download($event)">
+          <mat-icon>file_download</mat-icon>
+        </button>
       </div>
-    </form>
-  </mat-card>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.nome" placeholder="Nome" formControlName="nome" name="nome">
+      </mat-form-field>
+      <mat-error *ngIf="formulario.controls.nome.hasError('required') && (formulario.controls.nome.touched)">
+        Nome obrigatório
+      </mat-error>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.identidade" placeholder="Identidade" formControlName="identidade" name="identidade">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [textMask]="{mask: mask}" [(ngModel)]="voluntario.cpf" placeholder="CPF*" formControlName="cpf" name="cpf">
+      </mat-form-field>
+      <mat-error *ngIf="formulario.controls.cpf.hasError('required') && (formulario.controls.cpf.touched)">
+        CPF obrigatório
+      </mat-error>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade" name="nacionalidade">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.endereco" placeholder="Endereo (Rua, nº,  bloco, apto.)" formControlName="endereco"
+          name="endereco">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.bairro" placeholder="Bairro" formControlName="bairro" name="bairro">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.cep" placeholder="CEP" formControlName="cep" name="cep">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.estadoCivil" placeholder="Estado Civil" formControlName="estadoCivil" name="estadoCivil">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.telefone" placeholder="Telefone" formControlName="telefone" name="telefone">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>
