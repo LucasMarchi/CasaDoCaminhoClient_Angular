@@ -22,17 +22,17 @@ import { DoacaoCadastroComponent } from './doacao-cadastro/doacao-cadastro.compo
 import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
 
 //local
-const config = {
+/*const config = {
   issuer: 'https://dev-271925.oktapreview.com/oauth2/default',
   redirectUri: 'http://localhost:4200/implicit/callback',
   clientId: '0oae6xajeyTn2UEvu0h7'
-};
+};*/
 //prod
-/*const config = {
+const config = {
   issuer: 'https://dev-271925.oktapreview.com/oauth2/default',
   redirectUri: 'https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/implicit/callback',
   clientId: '0oaeuvnc3eSYQ3uIt0h7'
-};*/
+};
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
