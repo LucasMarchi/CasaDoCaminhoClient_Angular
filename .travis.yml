@@ -16,5 +16,5 @@ script:
   - ng build --prod --base-href="https://lucasmarchi.github.io/CasaDoCaminhoClient_Angular/"
   - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/LucasMarchi/CasaDoCaminhoClient_Angular.git --name="LucasMarchi" --email=lucas-marchi@hotmail.com
 
-  notifications:
-    slack: tcc-ifsp:1hVeRoJlJKEw3ZMt4UJj9cb5
+notifications:
+  slack: tcc-ifsp:1hVeRoJlJKEw3ZMt4UJj9cb5
