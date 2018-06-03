@@ -43,6 +43,7 @@ import { DoacaoCadastroComponent } from './doacao-cadastro/doacao-cadastro.compo
 import { DoacaoService } from './doacao.service';
 import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { NotfoundSnackbarComponent } from './notfound-snackbar/notfound-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { DialogComponent } from './dialog/dialog.component';
     DoacaoCadastroComponent,
     DoacaoDetalheComponent,
     DialogComponent,
+    NotfoundSnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,7 @@ import { DialogComponent } from './dialog/dialog.component';
   ],
   entryComponents: [
     DialogComponent,
+    NotfoundSnackbarComponent
   ],
   providers: [
     VoluntarioService,

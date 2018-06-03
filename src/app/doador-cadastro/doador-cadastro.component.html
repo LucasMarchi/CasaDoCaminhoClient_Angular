@@ -19,23 +19,26 @@
     <div fxLayout="column" fxLayoutAlign="center">
 
       <mat-radio-group [(ngModel)]="doador.tipo" formControlName="tipo" name="tipo" id="tipo">
-        <mat-radio-button fxFlexOffset="7px" *ngFor="let tipo of ['Física', 'Jurídica']" [value]="tipo" class="radio-button">
+        <mat-radio-button (change)="onDocumentoChange()" fxFlexOffset="7px" *ngFor="let tipo of ['Física', 'Jurídica']" [value]="tipo" class="radio-button">
           {{tipo}}
         </mat-radio-button>
       </mat-radio-group>
       <br>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="doador.nome" placeholder="{{doador.tipo == 'Física' ? 'Nome' : 'Razão Social'}}" formControlName="nome" name="nome">
+        <input matInput [(ngModel)]="doador.nome" placeholder="{{doador.tipo == 'Física' ? 'Nome*' : 'Razão Social*'}}" formControlName="nome" name="nome">
       </mat-form-field>
-      <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
-        Nome obrigatório
-      </div>
+      <mat-error *ngIf="formulario.controls.nome.hasError('required') && (formulario.controls.nome.touched)">
+        {{ doador.tipo == 'Física' ? 'Nome obrigatório' : 'Razão Social obrigatória' }}
+      </mat-error>
       <br>
 
       <mat-form-field>
-        <input matInput [(ngModel)]="doador.documento" placeholder="{{doador.tipo == 'Física' ? 'CPF' : 'CNPJ'}}" formControlName="documento" name="documento">
+        <input matInput [textMask]="{mask: mask}" [(ngModel)]="doador.documento" placeholder="{{doador.tipo == 'Física' ? 'CPF*' : 'CNPJ*'}}" formControlName="documento" name="documento">
       </mat-form-field>
+      <mat-error *ngIf="formulario.controls.documento.hasError('required') && (formulario.controls.documento.touched)">
+        {{ doador.tipo == 'Física' ? 'CPF obrigatório' : 'CNPJ obrigatório' }}
+      </mat-error>
       <br>
 
       <mat-form-field>

@@ -8,6 +8,9 @@ import { Item } from '../models/item';
 import { UtilService } from '../util.service';
 import { Doador } from '../models/doador';
 import { DoadorService } from '../doador.service';
+import { CPF, CNPJ } from '../consts/utils.const';
+import { MatSnackBar } from '@angular/material';
+import { NotfoundSnackbarComponent } from '../notfound-snackbar/notfound-snackbar.component';
 
 @Component({
   selector: 'app-doacao-cadastro',
@@ -19,6 +22,7 @@ export class DoacaoCadastroComponent implements OnInit {
   @Input() doacao: Doacao = new Doacao();
   @Input() item: Item = new Item();
   formulario: FormGroup;
+  public mask = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,20 +30,32 @@ export class DoacaoCadastroComponent implements OnInit {
     private doadorService: DoadorService,
     private location: Location,
     private formBuilder: FormBuilder,
-    private utilService: UtilService
+    private utilService: UtilService,
+    public snackBar: MatSnackBar
   ) {
     this.createForm();
+  }
+
+  onDocumentoChange() {
+    if (this.mask == CPF) {
+      this.mask = CNPJ;
+    } else {
+      this.mask = CPF;
+    }
   }
 
   ngOnInit() {
     if (this.doacao.doador == null) this.doacao.doador = new Doador();
     if (this.doacao.itens == null) this.doacao.itens = new Array<Item>();
+    this.doacao.doador.tipo = "Física";
+    this.mask = CPF;
   }
 
   createForm() {
     this.formulario = this.formBuilder.group({
-      documento: ['', Validators.required],
-      nome: [''],
+      doadorDocumento: ['', Validators.required],
+      doadorTipo: [''],
+      itemNome: [''],
       quantidade: ['']
     });
   }
@@ -48,11 +64,15 @@ export class DoacaoCadastroComponent implements OnInit {
 
     this.doadorService.getByDocumento(this.doacao.doador.documento)
       .subscribe(doador => {
-        this.doacao.doador = doador;
-        this.doacaoService.add(this.doacao)
-          .subscribe(() => this.goBack());
+        console.log("doador..." + doador);
+        if (doador != null) {
+          this.doacao.doador = doador;
+          this.doacaoService.add(this.doacao)
+            .subscribe(() => this.goBack());
+        }else{
+          this.openSnackBar();
+        }
       });
-
 
   }
 
@@ -71,6 +91,12 @@ export class DoacaoCadastroComponent implements OnInit {
   remover(item: Item, event) {
     event.preventDefault();
     this.doacao.itens = this.utilService.remove(this.doacao.itens, item);
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(NotfoundSnackbarComponent, {
+      duration: 5000,
+    });
   }
 
   goBack(): void {

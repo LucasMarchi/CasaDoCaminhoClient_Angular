@@ -22,8 +22,15 @@
         <label>
           <strong>Doador</strong>
         </label>
+        <br>
+        <mat-radio-group [(ngModel)]="doacao.doador.tipo" formControlName="doadorTipo" name="tipo" id="tipo">
+          <mat-radio-button (change)="onDocumentoChange()" *ngFor="let tipo of ['Física', 'Jurídica']" [value]="tipo" class="radio-button">
+            {{tipo}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <br>
         <mat-form-field>
-          <input matInput [(ngModel)]="doacao.doador.documento" placeholder="CPF/CNPJ" formControlName="documento" name="documento">
+          <input matInput [textMask]="{mask: mask}" [(ngModel)]="doacao.doador.documento" placeholder="{{doacao.doador.tipo == 'Física' ? 'CPF*' : 'CNPJ*'}}" formControlName="doadorDocumento" name="documento">
         </mat-form-field>
         <br>
 
@@ -32,10 +39,10 @@
             <strong>Itens</strong>
           </label>
           <mat-form-field>
-            <input matInput [(ngModel)]="item.nome" placeholder="Nome" formControlName="nome" name="nome">
+            <input matInput [(ngModel)]="item.nome" placeholder="Nome" formControlName="itemNome" name="nome">
           </mat-form-field>
           <mat-form-field>
-            <input matInput [(ngModel)]="item.quantidade" placeholder="Quantidade" formControlName="quantidade" name="quantidade">
+            <input type="number" matInput [(ngModel)]="item.quantidade" placeholder="Quantidade" formControlName="quantidade" name="quantidade">
           </mat-form-field>
         </div>
       </div>

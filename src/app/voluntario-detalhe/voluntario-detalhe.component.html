@@ -26,15 +26,15 @@
       </mat-error>
       <br>
       <mat-form-field>
-        <input matInput [(ngModel)]="voluntario.identidade" placeholder="Identidade" formControlName="identidade" name="identidade">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
         <input matInput [textMask]="{mask: mask}" [(ngModel)]="voluntario.cpf" placeholder="CPF*" formControlName="cpf" name="cpf">
       </mat-form-field>
       <mat-error *ngIf="formulario.controls.cpf.hasError('required') && (formulario.controls.cpf.touched)">
         CPF obrigatório
       </mat-error>
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="voluntario.identidade" placeholder="Identidade" formControlName="identidade" name="identidade">
+      </mat-form-field>
       <br>
       <mat-form-field>
         <input matInput [(ngModel)]="voluntario.nacionalidade" placeholder="Nacionalidade" formControlName="nacionalidade" name="nacionalidade">

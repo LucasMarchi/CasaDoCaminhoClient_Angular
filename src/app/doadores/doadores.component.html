@@ -14,6 +14,21 @@
       <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tipo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="documento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Documento </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.documento}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="telefone">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.telefone}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="editar">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
         <mat-cell *matCellDef="let row">

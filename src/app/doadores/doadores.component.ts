@@ -11,7 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class DoadoresComponent implements OnInit {
 
-  displayedColumns = ['nome', 'editar', 'excluir'];
+  displayedColumns = ['nome', 'tipo', 'documento', 'telefone', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Doador>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

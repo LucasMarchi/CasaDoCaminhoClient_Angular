@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Doador } from '../models/doador';
 import { DoadorService } from '../doador.service';
+import { CPF, CNPJ } from '../consts/utils.const';
 
 @Component({
   selector: 'app-doador-detalhe',
@@ -13,8 +14,8 @@ import { DoadorService } from '../doador.service';
 export class DoadorDetalheComponent implements OnInit {
 
   @Input() doador: Doador;
-
   formulario: FormGroup;
+  public mask = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,11 +42,22 @@ export class DoadorDetalheComponent implements OnInit {
       email: ['', Validators.required]
     });
   }
+
+  onDocumentoChange() {
+    if (this.mask == CPF) {
+      this.mask = CNPJ;
+    } else {
+      this.mask = CPF;
+    }
+  }
   
   getDoador(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.doadorService.getById(id)
-      .subscribe(doador => this.doador = doador);
+      .subscribe(doador => {
+        this.doador = doador;
+        this.mask = this.doador.tipo == 'Física' ? CPF : CNPJ; 
+      });
   }
 
   update(): void {

@@ -11,7 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class ProjetosComponent implements OnInit {
 
-  displayedColumns = ['nome', 'editar', 'excluir'];
+  displayedColumns = ['nome', 'equipeExecutora', 'editar', 'excluir'];
   dataSource: MatTableDataSource<Projeto>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

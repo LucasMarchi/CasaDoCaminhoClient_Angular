@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Beneficiario } from '../models/beneficiario'; '../models/beneficiario';
 import { BeneficiarioService } from '../beneficiarios.service';
+import { CPF } from '../consts/utils.const';
 
 @Component({
   selector: 'app-beneficiario-detalhe',
@@ -13,6 +14,7 @@ import { BeneficiarioService } from '../beneficiarios.service';
 export class BeneficiarioDetalheComponent implements OnInit {
 
   @Input() beneficiario: Beneficiario;
+  public mask = CPF;
 
   formulario: FormGroup;
 
@@ -32,6 +34,7 @@ export class BeneficiarioDetalheComponent implements OnInit {
   createForm() {
     this.formulario = this.formBuilder.group({
       nome: ['', Validators.required],
+      cpf: ['', Validators.required],
       idade: [''],
       sexo: [''],
       cidadeNatal: [''],
@@ -49,8 +52,7 @@ export class BeneficiarioDetalheComponent implements OnInit {
       enederecoComercial: [''],
       telefoneComercial: [''],
       telefoneResidencial: [''],
-      identidade: [''],
-      cpf: ['']
+      identidade: ['']
     });
   }
 

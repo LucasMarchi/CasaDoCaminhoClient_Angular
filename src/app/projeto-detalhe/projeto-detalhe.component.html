@@ -2,7 +2,7 @@
   <form [formGroup]="formulario" (ngSubmit)="update()">
     <div fxLayout="row">
       <div fxFlexAlign="start">
-        <button mat-icon-button type="submit" routerLink="/home">
+        <button mat-icon-button type="submit" routerLink="/projetos">
           <mat-icon>arrow_back</mat-icon>
         </button>
       </div>
@@ -19,11 +19,11 @@
         <div fxLayout="column" fxLayoutAlign="center">
           <br>
           <mat-form-field>
-            <input matInput [(ngModel)]="projeto.nome" placeholder="Nome" formControlName="nome" name="nome">
+            <input matInput [(ngModel)]="projeto.nome" placeholder="Nome*" formControlName="nome" name="nome">
           </mat-form-field>
-          <div *ngIf="formulario.controls.nome.invalid && formulario.controls.nome.touched">
+          <mat-error *ngIf="formulario.controls.nome.hasError('required') && (formulario.controls.nome.touched)">
             Nome obrigatório
-          </div>
+          </mat-error>
           <br>
           <mat-form-field>
             <input matInput [(ngModel)]="projeto.justificativa" placeholder="Justificativa" formControlName="justificativa" name="justificativa">
