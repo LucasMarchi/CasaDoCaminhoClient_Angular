@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Voluntario } from '../models/voluntario'; '../models/voluntario';
@@ -22,7 +22,7 @@ export class VoluntarioDetalheComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private voluntarioService: VoluntarioService,
-    private location: Location,
+    private router: Router,
     private formBuilder: FormBuilder,
     private relatorioVoluntarioService: RelatorioVoluntarioService
   ) {
@@ -64,7 +64,7 @@ export class VoluntarioDetalheComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/voluntarios']);
   }
 
 }

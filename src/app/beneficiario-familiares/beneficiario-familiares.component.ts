@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { Beneficiario } from '../models/beneficiario';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BeneficiarioService } from '../beneficiarios.service';
 import { Familiar } from '../models/familiar';
 import { UtilService } from '../util.service';
@@ -19,7 +19,7 @@ export class BeneficiarioFamiliaresComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private beneficiarioService: BeneficiarioService,
-    private location: Location,
+    private router: Router,
     private utilService: UtilService
   ) { }
 
@@ -61,7 +61,7 @@ export class BeneficiarioFamiliaresComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/beneficiarios']);
   }
 
 

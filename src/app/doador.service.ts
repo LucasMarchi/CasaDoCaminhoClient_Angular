@@ -27,8 +27,9 @@ export class DoadorService {
     );
   }
 
-  getByDocumento(documento: String): Observable<Doador> {
-    const url = `${this.doadoresUrl}/documento/${documento}`;
+  getByDocumento(documento: String, tipo: String): Observable<Doador> {
+    documento = documento.replace( /\D/g , "");
+    const url = `${this.doadoresUrl}/documento/${documento}/${tipo}`;
     return this.http.get<Doador>(url).pipe(
       tap(_ => this.log(`fetched Doador documento=${documento}`)),
       catchError(this.handleError<Doador>(`getDoador documento=${documento}`))

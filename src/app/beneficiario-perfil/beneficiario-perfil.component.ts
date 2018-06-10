@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Beneficiario } from '../models/beneficiario'; '../models/beneficiario';
@@ -32,7 +32,7 @@ export class BeneficiarioPerfilComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private beneficiarioService: BeneficiarioService,
-    private location: Location,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {
     this.createForm();
@@ -82,7 +82,7 @@ export class BeneficiarioPerfilComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/beneficiarios']);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Doacao } from '../models/doacao';
@@ -25,6 +25,7 @@ export class DoacaoCadastroComponent implements OnInit {
   public mask = null;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private doacaoService: DoacaoService,
     private doadorService: DoadorService,
@@ -62,7 +63,7 @@ export class DoacaoCadastroComponent implements OnInit {
 
   add(): void {
 
-    this.doadorService.getByDocumento(this.doacao.doador.documento)
+    this.doadorService.getByDocumento(this.doacao.doador.documento, this.doacao.doador.tipo)
       .subscribe(doador => {
         console.log("doador..." + doador);
         if (doador != null) {
@@ -100,7 +101,7 @@ export class DoacaoCadastroComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/doacoes']);
   }
 
 }

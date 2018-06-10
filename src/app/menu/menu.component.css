@@ -1,3 +1,9 @@
+.mat-toolbar.mat-primary {
+    background: #8C5A1C;
+    color: #fff;
+}
+
 .menu{
     padding: 0;
 }
+

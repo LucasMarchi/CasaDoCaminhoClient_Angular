@@ -14,6 +14,11 @@
       <mat-cell *matCellDef="let row"> {{row.doador.nome}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="documento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Documento </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.doador.documento}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="editar">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
         <mat-cell *matCellDef="let row">

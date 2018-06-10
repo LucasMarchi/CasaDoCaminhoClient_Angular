@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Projeto } from '../models/projeto';
@@ -19,7 +19,7 @@ export class ProjetoDetalheComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private projetoService: ProjetoService,
-    private location: Location,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {
     this.createForm();
@@ -56,7 +56,7 @@ export class ProjetoDetalheComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/projetos']);
   }
 
 }
