@@ -1,0 +1,43 @@
+<br>
+
+<mat-card *ngIf="familiar">
+
+  <div fxLayout="row">
+    <div fxLayoutGap="10px">
+      <mat-form-field>
+        <input matInput [(ngModel)]="familiar.idade" type="number" placeholder="Idade" name="idade">
+      </mat-form-field>
+      <span></span>
+      <mat-form-field>
+        <input matInput [(ngModel)]="familiar.tamanhoCalcado" type="number" placeholder="Tamanho Calçado" name="tamanhoCalcado">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="buscarFamiliares($event)">Buscar</button>
+    </div>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nome}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="idade">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Idade </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.idade}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tamanhoCalcado">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tamanho do Calçado </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tamanhoCalcado}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+</mat-card>

@@ -1,9 +1,11 @@
 export class Familiar {
-    id: number;
+	id: number;
+	idade: number;
+	tamanhoCalcado: number;
     nome: String;
 	parentesco: String;
 	escolaridade: String;
 	convenio: String;
 	ocupacao: String;
-	rendaMensal: number;	
+	rendaMensal: number;
 }

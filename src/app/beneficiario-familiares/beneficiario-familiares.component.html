@@ -22,10 +22,16 @@
           <input matInput [(ngModel)]="familiar.nome" placeholder="Nome" name="nome">
         </mat-form-field>
         <mat-form-field>
+          <input matInput [(ngModel)]="familiar.idade" type="number" placeholder="Idade" name="idade">
+        </mat-form-field>
+        <mat-form-field>
           <input matInput [(ngModel)]="familiar.parentesco" placeholder="Parentesco" name="parentesco">
         </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="familiar.escolaridade" placeholder="Escolaridade" name="escolaridade">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="familiar.tamanhoCalcado" type="number" placeholder="Tamanho Calçado" name="tamanhoCalcado">
         </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="familiar.convenio" placeholder="Convênio" name="convenio">
@@ -51,8 +57,10 @@
             </button>
           </div>
           <label><strong>Nome: </strong></label><span>{{familiar.nome}}</span><br><br>
+          <label><strong>Idade: </strong></label><span>{{familiar.idade}}</span><br><br>
           <label><strong>Parentesco: </strong></label><span>{{familiar.parentesco}}</span><br><br>
           <label><strong>Escolaridade: </strong></label><span>{{familiar.escolaridade}}</span><br><br>
+          <label><strong>Tamanho do Calçado: </strong></label><span>{{familiar.tamanhoCalcado}}</span><br><br>
           <label><strong>Convênio: </strong></label><span>{{familiar.convenio}}</span><br><br>
           <label><strong>Ocupação: </strong></label><span>{{familiar.ocupacao}}</span><br><br>
           <label><strong>Renda Mensal: </strong></label><span>{{familiar.rendaMensal}}</span>

@@ -44,6 +44,8 @@ import { DoacaoService } from './doacao.service';
 import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { NotfoundSnackbarComponent } from './notfound-snackbar/notfound-snackbar.component';
+import { RelatorioFamiliaresComponent } from './relatorio-familiares/relatorio-familiares.component';
+import { RelatorioService } from './relatorio.service';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import { NotfoundSnackbarComponent } from './notfound-snackbar/notfound-snackbar
     DoacaoDetalheComponent,
     DialogComponent,
     NotfoundSnackbarComponent,
+    RelatorioFamiliaresComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +100,7 @@ import { NotfoundSnackbarComponent } from './notfound-snackbar/notfound-snackbar
     UtilService,
     RelatorioVoluntarioService,
     DoacaoService,
+    RelatorioService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

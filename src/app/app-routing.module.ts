@@ -20,6 +20,7 @@ import { BeneficiarioFamiliaresComponent } from './beneficiario-familiares/benef
 import { DoacaoComponent } from './doacao/doacao.component';
 import { DoacaoCadastroComponent } from './doacao-cadastro/doacao-cadastro.component';
 import { DoacaoDetalheComponent } from './doacao-detalhe/doacao-detalhe.component';
+import { RelatorioFamiliaresComponent } from './relatorio-familiares/relatorio-familiares.component';
 
 //local
 /*const config = {
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'projetos', component: ProjetosComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'projeto/cadastro', component: ProjetoCadastroComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'projeto/:id', component: ProjetoDetalheComponent, canActivate: [ OktaAuthGuard ] },
+  { path: 'relatorios/familiares', component: RelatorioFamiliaresComponent, canActivate: [ OktaAuthGuard ] },
   { path: 'implicit/callback', component: OktaCallbackComponent }
 ];
 @NgModule({
